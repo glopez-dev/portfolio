@@ -39,6 +39,8 @@
     }
 </script>
 
+<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.273/build/spline-viewer.js"></script>
+
 <body class="h-full w-full flex flex-col items-center bg-blue-800" x-data="{open : false}">
 
     <header class="h-fit w-full xl:w-5/6 p-2 md:px-4 lg:px-6 pr-3 flex flex-row justify-between items-center fixed top-0 z-10">
@@ -78,7 +80,10 @@
 
         <main class="h-screen w-screen pt-44 flex flex-col justify-start items-center">
             <ul class="text-center text-white">
-                <li>À PROPOS</li>
+                <li>
+                    <a href="#presentation">À PROPOS</a>
+                </li>
+
                 <li>PROJETS</li>
                 <li>STAGES</li>
                 <li>VEILLE</li>
@@ -90,81 +95,108 @@
     <main class="h-fit w-full xl:w-5/6 px-2 md:px-4 lg:px-10">
 
         <!-- Homepage -->
-        <section class="h-screen w-full pt-44 text-white flex flex-col">
-            
-            <!-- Photo de profil -->
-            <div class="h-32 w-32 my-10 rounded-full bg-red-600 self-center hidden">
+        <section class="h-screen w-full text-white flex flex-col">
+                
+            <div class="xl:h-full xl:flex xl:flex-row ">
+                <!-- Introduction text -->
+                <div class="flex flex-col md:w-5/6 lg:w-4/6 xl:w-1/2 h-full pb-10 justify-center">
+                    <span class="max-sm:text-4xl text-3xl font-medium">Enchanté ! &#128075</span>
+                    <span class="max-sm:text-xl text-md pt-2 font-light">
+                        Je suis étudiant en 2eme année de <span class="font-normal">BTS SIO</span> avec une spécialité en développement informatique.
+                        Sur ce portfolio vous pourrez découvrir mon <span class="font-normal">parcours</span>, mes <span class="font-normal">réalisations</span>
+                        et mon <span class="font-normal">projet professionnel</span> 
+                    </span>
+                </div>
+                <!-- 3D illustration -->
+                <spline-viewer url="https://prod.spline.design/dZstga7eX0c8tB-R/scene.splinecode" class="xl:w-1/2"></spline-viewer>
             </div>
-            
-            <!-- Introduction text -->
-            <div class="flex flex-col md:w-5/6 lg:w-4/6 xl:w-1/2 h-full pb-10 justify-center">
-                <span class="max-sm:text-4xl text-3xl font-medium">Enchanté ! &#128075</span>
-                <span class="max-sm:text-xl text-md pt-2 font-light">
-                    Je suis étudiant en 2eme année de <span class="font-normal">BTS SIO</span> avec une spécialité en développement informatique.
-                    Sur ce portfolio vous pourrez découvrir mon <span class="font-normal">parcours</span>, mes <span class="font-normal">réalisations</span>
-                     et mon <span class="font-normal">projet professionnel</span> 
-                </span>
-            </div>
+
         </section>
 
         <!-- Second page -->
-        <section class="h-screen w-full pt-20 mb-14 max-sm:px-3 text-white text-xl">
-            <h1 class="text-3xl font-medium">
+        <section class="min-h-screen h-fit w-full pt-20 mb-14 max-sm:px-3 text-white text-xl">
+            <h1 class="text-3xl font-medium" >
                Présentation 
             </h1>
-            <div class="max-lg:h-fit h-5/6 pt-3 flex flex-col sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 sm:gap-7">
-                <div class="bg-white text-base text-black border-4 border-black rounded-xl max-sm:mb-5 p-3 shadow-cartoon">
-                    <h2 class="w-full h-fit text-center text-black text-lg font-medium">
+            <div id="presentation" class="max-lg:h-fit h-5/6 pt-3 flex flex-col sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 sm:gap-7">
+                <div class="bg-white text-base text-black border-4 border-black rounded-xl max-sm:mb-5 p-3 lg:p-5 shadow-cartoon">
+                    <h2 class="w-full h-fit pb-2 text-center text-black text-lg font-medium">
                         D'où je viens 
                     </h2>
-                    <span class="text-justify">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore, inventore. Ab incidunt, quisquam sequi quidem id dignissimos totam magni, 
-                        molestias quibusdam voluptatem mollitia alias, excepturi saepe deleniti nostrum. Optio, aut!
-                    </span>
+                    <p class="">
+                        Aprés avoir obtenu un Bac Scientifique en 2019, j'ai effectué deux ans de licence en Administration et Échanges internationaux à l'Université Paris-Est Créteil.
+                        Malgrés un intéret pour les sujets enseignés j'ai décidé de me réorienter vers l'informatique en 2021 aprés avoir appris le language C de mon côté.
+                        Je me suis donc orienté vers un BTS SIO (Service Informatique aux Organisations) formation en deux ans orientée développement Web et Mobile.
+                    </p>
                 </div>
-                <div class="bg-white text-base text-black border-4 border-black rounded-xl max-sm:mb-5 p-3 shadow-cartoon">
-                    <h2 class="w-full h-fit text-center text-black text-lg font-medium">
+                <div class="bg-white text-base text-black border-4 border-black rounded-xl max-sm:mb-5 p-3 lg:p-5 shadow-cartoon">
+                    <h2 class="w-full h-fit pb-2 text-center text-black text-lg font-medium">
                         Là où j'en suis
                     </h2>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam dolorem similique eveniet praesentium debitis hic possimus eos soluta voluptas 
-                    blanditiis amet veritatis nesciunt, rem sapiente voluptatibus consectetur ut aut necessitatibus.
+                    <p class="">
+                        Ce BTS m'a offert un cadre dans mon apprentissage de l'informatique, j'ai choisi la spécialité SLAM (Solutions Logicielles et Applications Métier) 
+                        c'est à dire de développement car je savais depuis le départ que c'était le domaine qui m'intéressait le plus. 
+                        Je garde cependant un attrait pour l'administration système et les réseaux auquels je m'intéresse sur mon temps libre notamment à travers des formations en Cybersécurité
+                        telles que celles proposées par le site <a href="https://tryhackme.com/">tryhackme.com</a>
+                    </p>
                 </div>
-                <div class="bg-white text-base text-black border-4 border-black rounded-xl p-3 shadow-cartoon">
-                    <h2 class="w-full h-fit text-center text-black text-lg font-medium">
+                <div class="bg-white text-base text-black border-4 border-black rounded-xl p-3 lg:p-5 shadow-cartoon">
+                    <h2 class="w-full h-fit pb-2 text-center text-black text-lg font-medium">
                         Et où je vais
                     </h2>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo voluptates eligendi architecto illo. Assumenda quia necessitatibus, autem magni 
-                    doloribus impedit eveniet beatae dolore maiores sint quisquam itaque adipisci similique deserunt.
+                    <p class="">
+                        Après mon BTS j'aimerais continuer en tant que développeur et travailler avec le langage Python afin de
+                        travailler sur des projets an rapport avec le machine learning et l'intelligence artificielle, je cherche désormais 
+                        alternance dans le domaine de la data afin de concorder avec mon projet professionnel et j'ai déja commencé a pratiquer le 
+                        python sur des sites tels que <a href="#">Codewars</a> et <a href="#">Coding games</a>
+                    </p> 
                 </div>
             </div>
         </section>
 
         <!-- Projects page -->
-        <section class="h-fit sm:h-screen w-full pt-20 max-sm:px-3 text-white text-xl">
-            <h1 class="text-3xl font-medium">
-                Projets
-            </h1>
-            <div class="h-fit sm:h-5/6 my-5 flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:grid-rows-2 sm:gap-5">
-               <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon lg:col-start-1 lg:col-span-3">Festival</div>
-               <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon lg:col-start-4 lg:col-span-2">Facturation</div>
-               <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon row-start-2 lg:col-start-3 lg:col-span-3 ">Parking</div>
-               <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon row-start-2 lg:col-start-1 lg:col-span-2">Personnel</div> 
-            </div>
-        </section>
+        <section class="min-h-screen h-fit sm:h-screen w-full pt-20 max-sm:px-3 text-white text-xl flex flex-col justify-center items-center">
+                <h1 class="text-3xl font-medium">
+                    Projets
+                </h1>
+                <div class="h-fit w-full lg:w-5/6 xl:w-3/4 sm:h-5/6 my-5 flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:grid-rows-2 sm:gap-5">
+                    
+                    <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon lg:col-start-1 lg:col-span-3 overflow-hidden flex flex-col justify-center items-center relative">
+                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/festival.png')] hue-rotate-60 z-0"></div>
+                        <h2 class="h-fit w-fit bg-white border-black border-2 px-2 text-black shadow-cartoon-sm hover:shadow-cartoon hover:text-2xl transition delay-150 ease-in-out z-10">Festival</h2>
+                    </div>
+
+                    <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon lg:col-start-4 lg:col-span-2 flex flex-col justify-center items-center relative overflow-hidden">
+                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/facturation.png')]  hue-rotate-60 z-0"></div>
+                        <h2 class="h-fit w-fit  bg-white border-black border-2 px-2 text-black shadow-cartoon-sm hover:shadow-cartoon hover:text-2xl transition delay-150 ease-in-out z-10">Facturation</h2>
+                    </div>
+
+                    <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon row-start-2 lg:col-start-3 lg:col-span-3 flex flex-col justify-center items-center relative overflow-hidden">
+                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/parking.png')] hue-rotate-60 z-0"></div>
+                        <h2 class="h-fit w-fit bg-white border-black border-2 px-2 text-black shadow-cartoon-sm hover:shadow-cartoon hover:text-2xl transition delay-150 ease-in-out z-10">Parking</h2>
+                    </div>
+
+                    <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon row-start-2 lg:col-start-1 lg:col-span-2 flex flex-col justify-center items-center relative overflow-hidden">
+                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/personnel.png')] hue-rotate-60 z-0"></div>
+                        <h2 class="h-fit w-fit bg-white border-black border-2 px-2 text-black shadow-cartoon-sm hover:shadow-cartoon hover:text-2xl transition delay-150 ease-in-out z-10 ">Personnel</h2>
+                    </div>
+
+               </div>
+       </section>
 
         <!-- Internships page -->
-        <section class="h-fit  flex flex-col justify-center sm:h-screen w-full px-5 pt-20 max-sm:px-3 mt-5 text-white text-xl">
+        <section class="min-h-screen h-fit sm:h-screen flex flex-col justify-center items-center sm:h-screen w-full px-5 pt-20 max-sm:px-3 mt-5 text-white text-xl">
             <h1 class="text-3xl font-medium">
                 Stages
             </h1>
-            <div class="h-fit sm:h-5/6 my-5 flex flex-col sm:grid sm:grid-cols-1 sm:grid-rows-2 sm:gap-5">
+            <div class="h-fit sm:h-5/6 xl:w-3/4 mt-5 flex flex-col sm:grid sm:grid-cols-1 sm:grid-rows-2 sm:gap-10 ">
                 <!-- Internship card -->
-               <div class="lg:w-5/6 xl:w-3/4 2xl:w-1/2 bg-white border-black border-4 p-2 rounded-xl shadow-cartoon flex flex-col overflow-hidden sm:grid sm:grid-cols-2 sm:gap-4">
-                    <div class="h-44 w-full sm:h-3/4 w mb-3 rounded-lg bg-blue-600 "></div>
+               <div class="p-2 lg:p-3 max-sm:mb-5 bg-white border-black border-4  rounded-xl shadow-cartoon flex flex-col justify-center overflow-hidden sm:grid sm:grid-cols-2 sm:gap-4">
+                    <div class="h-44 sm:w-72 lg:w-80 sm:h-3/4 w mb-3 rounded-lg bg-blue-600 "></div>
                     <!-- Text -->
                     <div>
                         <h2 class="text-black">Tisanes fouché</h2>
-                        <span class="text-black text-base sm:text-sm md:text-base p-1">
+                        <span class="h-44 text-black text-base sm:text-sm md:text-base p-1 ">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                             Architecto sequi voluptatum totam ullam porro, iste, 
                             temporibus quae unde cupiditate quia est sunt molestiae 
@@ -172,56 +204,74 @@
                         </span>
                     </div>
                </div>
-
+                <!-- Internship card 2 -->
+               <div class="lg:p-3 bg-white border-black border-4 p-2 rounded-xl shadow-cartoon flex flex-col overflow-hidden sm:grid sm:grid-cols-2 sm:gap-4">
+                    <div class="h-44 sm:w-72 lg:w-80 sm:h-3/4 w mb-3 rounded-lg bg-blue-600 "></div>
+                    <!-- Text -->
+                    <div>
+                        <h2 class="text-black">APO'G</h2>
+                        <span class="h-44 text-black text-base sm:text-sm md:text-base p-1 ">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                            Architecto sequi voluptatum totam ullam porro, iste, 
+                            temporibus quae unde cupiditate quia est sunt molestiae 
+                            maxime aut iure maiores optio necessitatibus suscipit?
+                        </span>
+                    </div>
+               </div>
             </div>
         </section>
 
         <!-- Personnal research page -->
-        <section class="h-screen w-full px-5 lg:px-10 pt-20 max-sm:px-3 text-white text-xl">
+        <section class="min-h-screen h-fit w-full px-5 lg:px-10 pt-20 max-sm:px-3 text-white text-xl flex flex-col justify-center items-center">
             <h1 class="text-3xl font-medium">
                 Veille technologique
             </h1>
             <div class="h-fit sm:h-5/6 my-5 flex flex-col">
-                <div class="bg-white border-black text-black border-4 rounded-xl shadow-cartoon">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, veritatis delectus sapiente quas maxime ipsum. 
-                    Tempore fugiat molestiae eius! Alias esse perspiciatis dicta facilis ex laudantium delectus quae mollitia eligendi?
+                <div class="bg-white border-black text-black border-4 rounded-xl shadow-cartoon p-3">
+                    <h1 class="text-2xl font-bold mb-4">Pourquoi faire une veille technologique sur l'IA en 2023 ?</h1>
+	                <p class="mt-4 mb-8">En tant que développeur, il est essentiel de se tenir au courant des dernières tendances et avancées technologiques, en particulier dans le domaine de l'intelligence artificielle (IA). L'IA est une technologie en constante évolution qui offre des avantages et des opportunités considérables pour les entreprises et les particuliers, en offrant une solution à de nombreux défis dans des domaines tels que la santé, l'agriculture, la finance et la sécurité.</p>
+	                <p class="mt-4 mb-8">En faisant une veille technologique régulière sur l'IA en 2023, un développeur peut rester à la pointe de cette technologie en rapide évolution et découvrir de nouvelles façons de l'appliquer dans différents secteurs d'activité. La veille permet également de découvrir des nouvelles solutions et des nouvelles perspectives, comme les développements en matière de traitement du langage naturel, de vision par ordinateur et de machine learning.</p>
+	                <p class="mt-4 mb-8">En outre, la veille technologique sur l'IA peut aider un développeur à être au courant des dernières tendances en matière de réglementation et de conformité. En effet, les réglementations et les politiques liées à l'IA sont en constante évolution, et il est essentiel de comprendre les implications de ces changements pour garantir la conformité et éviter tout risque de non-conformité ou de violation de la vie privée des utilisateurs.</p>
+	                <p class="mt-4 mb-8">Enfin, une veille technologique régulière sur l'IA peut aider un développeur à rester au courant des nouveaux outils, des nouvelles méthodes et des nouvelles techniques de programmation qui peuvent être utilisés pour améliorer l'efficacité et la qualité de son travail. Cela peut également permettre d'identifier des nouvelles solutions et des nouvelles applications, permettant d'innover dans son travail et de développer de nouveaux projets passionnants.</p> 
                 </div>
             </div>
         </section>
 
         <!-- Contact page -->
         <section class="h-screen w-full px-5 lg:px-10 pt-20 max-sm:px-3 flex flex-col justify-center items-center text-white text-xl">
-
-            <h1 class="w-full text-center text-xl font-medium">
-                ME CONTACTER
-            </h1>
-            <h3 class="text-xs text-center font-light py-2">
-                VOUS POUVEZ DIRECTEMENT M'ENVOYER UN MAIL AVEC CE FORMULAIRE OU ME CONTACTER À MON ADRESSE 
-            </h3>
-            <span class="w-fit text-xs text-black font-medium bg-golden-fizz-400 px-1 shadow-cartoon">GLOPEZ-DEV@PROTON.ME</span>
-            <div class="h-fit w-full sm:h-5/6 my-5 flex flex-col items-center">
-                <div class="w-full bg-white border-black text-black border-4 rounded-xl shadow-cartoon">
-                    <form class="text-xs p-5 grid grid-cols-2 gap-2">
-                        <div class="block mb-1 col-span-1">
-                            <label for="firstname">Nom</label>
-                            <input type="text" name="firstname" id="firstname" required class="block w-full rounded-md p-1 bg-gray-100" placeholder="Dupont" />
-                        </div>
-                        <div class="block mb-1 col-span-1">
-                            <label for="lastname">Prenom</label>
-                            <input type="text" name="lastname" id="lastname" required class="block w-full rounded-md px-2 py-1 bg-gray-100" placeholder="Michel" />
-                        </div> 
-                        <div class="block mb-1 col-span-2">
-                            <label for="email">Email </label>
-                            <input type="text" name="email" id="email" required class="block w-full rounded-md p-1 bg-gray-100" placeholder="m.dupont@example.com" />
-                        </div>
-                        <div class="block mb-1 col-span-2">
-                            <label for="message">Que puis-je faire pour vous ?</label>
-                            <textarea name="message" id="message" class="block w-full rounded-md p-1 bg-gray-100 resize-none h-16" placeholder="J'aimerais discuter... "></textarea>
-                        </div>
-                        <div class="col-span-2 submit-group flex flex-row justify-end ">
-                            <button type="submit" class="bg-blue-600 text-white font-light px-2 py-1 rounded-lg border-black border-cartoon shadow-cartoon-sm">ENVOYER</button>
-                        </div>
-                    </form>
+            <!-- Container -->
+            <div class="lg:w-5/6 xl:w-3/5 flex flex-col justify-center items-center align-middle">
+                <h1 class="w-full text-center text-xl lg:text-2xl font-medium">
+                    ME CONTACTER
+                </h1>
+                <h3 class="text-xs lg:text-base text-center font-light py-2">
+                    VOUS POUVEZ DIRECTEMENT M'ENVOYER UN MAIL AVEC CE FORMULAIRE OU ME CONTACTER À MON ADRESSE : 
+                </h3>
+                <span class="w-fit text-xs lg:text-base text-black   font-medium bg-golden-fizz-400 px-1 shadow-cartoon">GLOPEZ-DEV@PROTON.ME</span>
+                <div class="h-fit w-full sm:h-5/6 my-5 flex flex-col items-center">
+                    <div class="w-full bg-white border-black text-black border-4 rounded-xl shadow-cartoon">
+                        <form class="text-xs lg:text-base p-5 grid grid-cols-2 gap-2">
+                            <div class="block mb-1 col-span-1">
+                                <label for="firstname">Nom</label>
+                                <input type="text" name="firstname" id="firstname" required class="block w-full rounded-md p-1 bg-gray-100" placeholder="Dupont" />
+                            </div>
+                            <div class="block mb-1 col-span-1">
+                                <label for="lastname">Prenom</label>
+                                <input type="text" name="lastname" id="lastname" required class="block w-full rounded-md px-2 py-1 bg-gray-100" placeholder="Michel" />
+                            </div> 
+                            <div class="block mb-1 col-span-2">
+                                <label for="email">Email </label>
+                                <input type="text" name="email" id="email" required class="block w-full rounded-md p-1 bg-gray-100" placeholder="m.dupont@example.com" />
+                            </div>
+                            <div class="block mb-1 col-span-2">
+                                <label for="message">Que puis-je faire pour vous ?</label>
+                                <textarea name="message" id="message" class="block w-full rounded-md p-1 bg-gray-100 resize-none h-16" placeholder="J'aimerais discuter... "></textarea>
+                            </div>
+                            <div class="col-span-2 submit-group flex flex-row justify-end ">
+                                <button type="submit" class="bg-blue-600 text-white font-light px-2 py-1 rounded-lg border-black border-cartoon shadow-cartoon-sm">ENVOYER</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
