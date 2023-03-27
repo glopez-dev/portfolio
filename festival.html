@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stage 1ere année</title>
+    <title>Projet Festival</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -71,7 +71,7 @@
                     <a href="index.html#contact">CONTACT</a>
                 </li>
                 <li class="px-1 hover:font-semibold hover:text-blue-300">
-                    <a href="index.hmtl#CV">CV</a>
+                    <a href="index.html#CV">CV</a>
                 </li>
             </ul>
         </nav>
@@ -109,66 +109,50 @@
 
         <section class="pt-24 pb-10 flex flex-col justify-center items-center">
             <!-- Titre de la page -->
-            <h1 class="w-full flex flex-row justify-center text-2xl text-white font-medium mb-5">Stage 1 : Tisanes Fouché</h1>
+            <h1 class="w-full flex flex-row justify-center text-2xl text-white font-medium mb-5">Projet : Gestion des hébergements</h1>
             <!-- Conteneur -->
             <div class="border-2 border-black shadow-cartoon bg-white p-10 pt-5 w-5/6 rounded-lg">
                 <!-- Contexte -->
                 <div class="pb-5">
                     <h2 class="text-black text-xl font-medium">Contexte</h2>
                     <p>
-                        Tisanes Fouché est une entreprise de vente d'infusions et compléments alimentaires par correspondance, 
-                        elle développe son propre logiciel de gestion avec l'aide de deux développeurs, le logiciel traitant des données comptables, 
-                        il doit être certifié NF525 afin d'être conforme a l'article 88 de la loi anti fraude à la TVA.
+                        La Maison des ligues organise un festival de sports nature en septembre, le festival Sp’Or, 
+                        et ne dispose pas d’application pour gérer l’hébergement des participants à ce festival. Chaque ligue pourra y inscrire des participants et/ou des équipes 
+                        (des tournois ou des matches seront organisés) et tenir un stand de présentation de la ligue pendant 15 jours. 
+                        Les établissements scolaires de la région vont mettre à disposition de la M2L  des chambres pour l’hébergement des personnes participant au festival.
                     </p>
                 </div>
                 <!-- Mission 1 -->
                 <div class="pb-5">
-                    <h2 class="text-black text-xl font-medium pb-1">Mission 1 : Préparation à la certification d'un logiciel</h2>
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 1 : Débugger l'application </h2>
                     <p class="pb-2">
-                        L'organisme de certification nous a fourni un référentiel 
-                        contenant l'ensemble des fonctionnalités que le logiciel devait implémenter et des normes et methodologies à respecter.
+                        A travers ce projet nous avons découvert notre premier language de script : le language PHP, l'application permettant d'effectuer des opérations CRUD (Create, Read, Update, Delete), 
+                        sur une base de données nous avons appris à nous servir du module PDO (PHP Data Object) c'était notre premier contact avec la programmation orientée objet nous avons donc pris le temps 
+                        de nous familiariser avec la syntaxe objet.
                     </p>
-                    <p class="pb-2">
-                        Ma première mission consistait à extraire du référentiel les informations dont l'équipe de développement avait besoin pour travailler.
-                    </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Objectifs :</h3>
                     <p>
                         <ul class="list-disc pl-5">
-                            <li>
-                                <a href="/pdf/liste_fonctionnalités.pdf" class="text-blue-800"></a>
-                            </li>
-                            <li>
-                                <a href="/pdf/liste_fonctionnalités.pdf" class="text-blue-800">Production d'une liste de fonctionnalités a implémenter au logiciel à partir du référentiel de certification.</a>
-                            </li>
-                            <li>
-                                <a href="/pdf/scenarios_utilisation.pdf" class="text-blue-800">Adapter les exigences produit imposées par la norme en scénarios d’utilisation du logiciel.</a>
-                            </li>
-                            <li>
-                                <a href="/pdf/">Les développeurs utilisaient la modélisation en UML j'ai donc réalisé un diagramme des cas d'utilisation avec le logiciel StarUML</a>
-                            </li>
-                            <li>
-                                <a href="/pdf/doc_vpc_max.pdf" class="text-blue-800">Production d'une documentation technique à l'aide des outils de l'environnement de développement WinDev</a>
-                            </li>
+                            <li>Aprentissage du PHP (procédural)</li>
+                            <li>Découverte de la programmation orientée objet à travers le module PDO</li>
+                            <li>Utilisation d'un débugger (interpréteur statique)</li>
                         </ul>
                     </p>
                 </div>
                 <!-- Mission 2 -->
                 <div class="pb-5">
-                    <h2 class="text-black text-xl font-medium pb-1">Mission 2 : Modernisation du réseau local</h2>
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 2 : Passage à une architecture applicative MVC</h2>
                     <p class="pb-2">
-                        Nous avons profité d'un jour férié pour effectuer des travaux sur le réseau de l'entreprise, 
-                        mon maitre de stage souhaitait changer un routeur et la maniére dont certains postes étaient organisés,
-                        je me suis occupé des tâches logicielles liées à ces travaux.
+                        L'architecure applicative la plus utilisée pour le web est le design pattern (patron de conception) MVC (Modèle Vue Controlleur), 
+                        à travers ce premier design pattern nous avons généralisé l'utilisation de la programmation orienté objet à l'application entière,
+                        il a fallu effecuter toute une reflexion à propos de la manière dont nous allions diviser le code procédural existant entre les différentes classes.
                     </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Objectifs :<h3>
                     <p>
                         <ul class="list-disc pl-5">
-                            <li>
-                                <a href="/pdf/scan_reseau.pdf" class="text-blue-800">Recensement des appareils réseaux de l'entreprise à l'aide de l'outil Nmap</a>
-                            </li>
-                            <li>
-                                <a href="/pdf/subnet_tf.pdf" class="text-blue-800">Création d'un schéma logique du réseau local (Adresses IP et noms d'hôtes).</a>
-                            </li>
-                            </li>
-                            <li>Paramétrage d'enregistrements DHCP statiques pour les appareils concernés.</li>
+                            <li>Aprentissage du PHP orienté objet</li>
+                            <li>Découverte du design pattern "MVC"</li>
+                            <li>Apprendre à factoriser son code dans des classes objet</li>
                         </ul>
                     </p>
                 </div>
