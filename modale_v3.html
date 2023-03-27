@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <!--jQuery pour le datepicker et le select2-->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/date-1.1.2/sl-1.4.0/datatables.min.css"/>
+
+    <style type="text/css">
+
+        .btn-bm{
+            color: #fff;
+            background-color: #334A70;
+            border-color: #334A70;
+        }
+        .btn-bm:hover {
+            color: #334A70;
+            background-color: #fff;
+            border-color: #334A70;
+        }
+        .btn-rm{
+            color: #fff;
+            background-color: #910a13;
+            border-color: #910a13;
+        }
+        .btn-rm:hover {
+            color: #910a13;
+            background-color: #fff;
+            border-color: #910a13 ;
+        }
+        .btn-outline-rm {
+            color: #910a13;
+            background-color: #fff;
+            border-color: #910a13;
+        }
+        .btn-outline-rm:hover {
+            color: #fff;
+            background-color: #910a13;
+            border-color: #910a13;
+        }
+        .bg-rm{
+            color: #fff;
+            background-color: #910a13;
+        }
+        .btn-dt-bm{
+            color: #334A70;
+            background-color: transparent;
+        }
+        .btn-dt-bm:hover {
+            color: #fff;
+            background-color: #334A70;
+        }
+        .btn-dt-gm{
+            color: #03940a;
+            background-color: transparent;
+        }
+        .btn-dt-gm:hover {
+            color: #fff;
+            background-color: #03940a;
+        }
+        .btn-dt-rm{
+            color: #910a13;
+            background-color: transparent;
+        }
+        .btn-dt-rm:hover {
+            color: #fff;
+            background-color: #910a13;
+        }
+        .nav-link, .nav-link:visited, .nav-link:active{
+            color:white;
+        }
+        .nav-link:hover{
+            color:#B1B1B1;
+        }
+        nav a, nav a:link, nav a.dropdown-item{
+            color:white;
+        }
+        nav a.dropdown-item:hover{
+            color:#B1B1B1;
+            background-color: #910a13;
+        }
+        a:hover{
+            color: #B1B1B1;
+        }
+        button a, ul li a, a{
+            color: #334A70;
+            outline: none;
+            text-decoration: none;
+        }
+        tr.odd{
+            background-color: #f1f1f1;
+        }
+        tr.odd:hover, tr.even:hover {
+            background-color: #B1B1B1;
+            color:#fff;
+        }
+        h4 {
+            text-transform: uppercase;
+        }
+
+    </style>
+
+</head>
+<div class="container my-3">
+    <div class="row justify-content-end">
+        <div class="col-md-6 text-end">
+            <button type="button" class="btn btn-bm rounded-0 mt-2" id="ajouter" data-bs-toggle="modal"
+                data-bs-target="#Modal" $displayAdd$>Ajouter un élément</button>
+        </div>
+    </div>
+    <table id="maTable" class="table table-bordered nowrap" width="100%" height="100%">
+        <thead>
+            <tr id="entete">
+            </tr>
+        </thead>
+    </table>
+
+
+    <!-- Modal Edition-->
+    <div class="modal fade xl vh-80" id="Modal" tabindex="-1"  data-bs-backdrop="static" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="height: 70vh;">
+                    <div class="mb-3" id="form_edit">
+                        <!--Onglets de la modale-->
+                        <nav>
+                            <div class="nav nav-tabs nav-fill">
+                                <a class="nav-link active text-primary" id="modifier_candidat" data-bs-toggle="tab" data-bs-target="#candidat-tab-pane" type="button">
+                                    Candidat 
+                                </a>
+                                <a class="nav-link text-secondary" id="modifier_dossier" data-bs-toggle="tab" data-bs-target="#dossier-tab-pane" type="button">
+                                    Informations dossier 
+                                </a>
+                                <a class="nav-link text-secondary" id="modifier_notes" data-bs-toggle="tab" data-bs-target="#notes-tab-pane" type="button">
+                                    Notes 
+                                </a>
+                                <a class="nav-link text-secondary" id="modifier_coordonnees" data-bs-toggle="tab" data-bs-target="#coordonnees-tab-pane" type="button" >
+                                    Coordonnées 
+                                </a>
+                            </div>
+                        </nav>
+                        <!--Contenu des onglets -->
+                        <form action="#" method="post" class="p-1 tab-content">
+                            <div class="tab-pane fade show active mt-3" id="candidat-tab-pane" role="tabpanel" aria-labelledby="modifier_candidat" tabindex="0">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col">
+                                        <!--Nom-->
+                                            <div class="form-floating">
+                                                <input id="Nom" type="text" maxlength="100" class="form-control shadow-sm" placeholder="Doe">
+                                                <label for="Nom" class="form-label">Nom</label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                        <!--Prenom-->
+                                            <div class="form-floating mb-3">
+                                                <input id="Prenom" type="text" maxlength="100" class="form-control shadow-sm" placeholder="John">
+                                                <label for="Prenom" class="form-label">Prénom</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Email-->
+                                    <div class="form-floating mb-3">
+                                        <input id="email" type="email" maxlength="100" class="form-control shadow-sm" placeholder="jdoe@example.mail">
+                                        <label for="email" class="form-label">email</label>
+                                    </div>
+                                    <!--Date de Naissance-->
+                                    <div class="form-floating mb-3">
+                                        <input id="datenaissance" type="text" maxlength="100" class="form-control shadow-sm" placeholder="01/01/2000">
+                                        <label for="datenaissance" class="form-label">Date de naissance</label>
+                                    </div>
+                                    <!--Sexe-->
+                                    <div class="form-floating mb-3">
+                                        <select name="Sexe" id="Sexe" class="form-select">
+                                            <option selected>Choisir une option</option>
+                                            <option value="M">Masculin</option>
+                                            <option value="F">Feminin</option>
+                                        </select>
+                                        <label for="Sexe" class="form-label">Sexe</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <!--Informations du dossier-->
+                            <div class="tab-pane fade  show mt-3" id="dossier-tab-pane" role="tabpanel" aria-labelledby="modifier_dossier" tabindex="0">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col">
+                                            <!--Numéro de dossier-->
+                                            <div class="form-floating mb-3">
+                                                <input id="NDossier" type="text" maxlength="100" class="form-control shadow-sm" placeholder="inconnu">
+                                                <label for="NDossier" class="form-label">Numéro de dossier</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">                                   
+                                            <!--Date de Creation-->
+                                            <div class="form-floating mb-3">
+                                                <input id="Creation" type="text" maxlength="100" class="form-control shadow-sm" placeholder="18/12/2022">
+                                                <label for="Creation" class="form-label">Date de création</label>
+                                            </div>                                   
+                                       </div>
+                                    </div>
+                                    <!--Nom du centre-->
+                                    <div class="form-floating mb-3">
+                                        <select name="CentreNom" id="CentreNom" class="form-select">
+                                            <option selected>Choisir une option</option>
+                                            <option value="ESPI Paris">ESPI Paris</option> 
+                                            <option value="ESPI Marseille">ESPI Marseille</option> 
+                                            <option value="ESPI Lyon">ESPI Lyon</option>                                              
+                                            <option value="ESPI Bordeaux">ESPI Bordeaux</option>
+                                            <option value="ESPI Nantes">ESPI Nantes</option>
+                                            <option value="ESPI Montreal">ESPI Montréal</option>
+                                            <option value="ESPI Montpellier">ESPI Montpellier</option>
+                                        </select>
+                                        <label for="CentreNom" class="form-label">Centre</label>
+                                    </div>
+                                        <!--Formation souhaitée-->
+                                        <div class="form-floating mb-3">
+                                            <select name="FormationSouhaitee" id="FormationSouhaitee" class="form-select">
+                                                <option selected>Choisir une option</option>
+                                                <option value="GESAI 1 TP">GESAI 1 TP</option>
+                                                <option value="GESAI 1 ALTERNANCE">GESAI 1 Alternance</option>
+                                                <option value="GESAI 3 ALTERNANCE">GESAI 3 Alternance</option>
+                                                <option value="M1 MAPI ALTERNANCE">M1 MAPI Alternance</option>
+                                                <option value="M1 MIFIM ALTERNANCE">M1 MIFIM Alternance</option>
+                                                <option value="M1 SPECIALITE INDETERMINEE - ALTERNANCE">M1 Spécialité indéterminée - Alternance</option>
+                                            </select>
+                                            <label for="FormationSouhaitee" class="form-label">Formation souhaitée</label>
+                                        </div>
+                                        <!--Statut ISO-->
+                                        <div class="form-floating mb-3">
+                                            <select name="ISOStatut" id="ISOStatut" class="form-select">
+                                                <option selected>Choisir une option</option>
+                                                <option value="CANDIDAT">Candidat</option>
+                                                <option value="PROSPECT">Prospect</option>
+                                            </select>
+                                            <label for="ISOStatut" class="form-label">Statut ISO</label>
+                                        </div>
+                                    <!--Date d'entretien-->
+                                    <div class="form-floating mb-3">
+                                        <input id="Date_Entretien" type="text" maxlength="100" class="form-control shadow-sm" placeholder="10/02/2023">
+                                        <label for="Date_Entretien" class="form-label">Date d'entretien</label>
+                                    </div>
+
+                                    <!--Frais payés-->
+                                    <div class="mx-3 d-flex justify-content-center">
+                                        <label for="FraisPaye" class="form-check-label">Frais payés</label>
+                                        <input id="FraisPaye" type="checkbox" maxlength="100" class="form-check-input ms-2">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane fade show mt-3" id="notes-tab-pane" role="tabpanel" aria-labelledby="modifier_notes" tabindex="0">
+                                <fieldset>
+                                     <!--Anglais 1-->
+                                    <div class="form-floating mb-3 input-group">
+                                        <input id="Str_Anglais1" type="text" maxlength="100" class="form-control shadow-sm" placeholder="20">
+                                        <label for="Str_Anglais1" class="form-label">Anglais 1</label>
+                                        <div class="input-group-text">/20</div>
+                                    </div>
+                                    <!--Anglais 2-->
+                                    <div class="form-floating mb-3 input-group">
+                                        <input id="Str_Anglais2" type="text" maxlength="100" class="form-control shadow-sm" placeholder="19">
+                                        <label for="Str_Anglais2" class="form-label">Anglais 2</label>
+                                        <div class="input-group-text">/20</div>
+                                    </div>
+                                    <!--Note écrit-->
+                                    <div class="form-floating mb-3 input-group">
+                                        <input id="NoteEcrit" type="text" maxlength="100" class="form-control shadow-sm" placeholder="20">
+                                        <label for="NoteEcrit" class="form-label">Écrit</label>
+                                        <div class="input-group-text">/20</div>
+                                    </div>
+                                    <!--Note oral-->
+                                    <div class="form-floating mb-3 input-group">
+                                        <input id="NoteOral" type="text" maxlength="100" class="form-control shadow-sm" placeholder="20">
+                                        <label for="NoteOral" class="form-label">Oral</label>
+                                        <div class="input-group-text">/20</div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="tab-pane fade  show mt-3" id="coordonnees-tab-pane" role="tabpanel" aria-labelledby="modifier_candidat" tabindex="0">
+                                <fieldset>
+                                    <!--Adresse 1-->
+                                    <div class="form-floating mb-3">
+                                        <input id="Adresse1" type="text" maxlength="100" class="form-control shadow-sm" placeholder="3 rue des peupliers">
+                                        <label for="Adresse1" class="form-label">Adresse 1</label>
+                                    </div>
+                                    <!--Adresse 2-->
+                                    <div class="form-floating mb-3">
+                                        <input id="Adresse2" type="text" maxlength="100" class="form-control shadow-sm" placeholder="18 avenue montaigne">
+                                        <label for="Adresse2" class="form-label">Adresse 2</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <!--Ville-->
+                                            <div class="form-floating mb-3">
+                                                <input id="Ville" type="text" maxlength="100" class="form-control shadow-sm" placeholder="Paris">
+                                                <label for="Ville" class="form-label">Ville</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <!--Code postal-->
+                                            <div class="form-floating mb-3">
+                                                <input id="CodePostal" type="text" maxlength="100" class="form-control shadow-sm" placeholder="75010">
+                                                <label for="CodePostal" class="form-label">Code postal</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Pays-->
+                                    <div class="form-floating mb-3">
+                                        <input id="Pays" type="text" maxlength="100" class="form-control shadow-sm" placeholder="France">
+                                        <label for="Pays" class="form-label">Pays</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <!--Evenements-->
+                            <div class="tab-pane fade show mt-4" id="evenements-tab-pane" role="tabpanel" aria-labelledby="voir_evenements" tabindex="0">
+                                <ul class="list-group list-group-horizontal">
+                                    <li class="list-group-item flex-fill">ID</li>
+                                    <li class="list-group-item flex-fill">Date</li>
+                                    <li class="list-group-item flex-fill">Objet</li>
+                                    <li class="list-group-item flex-fill">Descriptif</li>
+                                    <li class="list-group-item">
+                                        <button type="button" class="btn btn-dt-bm">
+                                            <i class="fas fa-edit "></i>  
+                                        </button>
+
+                                    </li>
+                                    <li class="list-group-item">
+                                        <button type="button" class="btn btn-dt-rm">
+                                            <i class="fas fa-trash "></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row justify-content-between w-100">
+                        <div class="col w-25 nav nav-pills">
+                            <a type="button" class="nav-link text-secondary" id="voir_evenements" data-bs-toggle="tab" data-bs-target="#evenements-tab-pane">
+                                <i class="fas fa-eye"></i>  
+                                &nbsp;Événements
+                            </a>
+                        </div>
+                        <div class="container w-25 justify-content-end d-flex flex-row">
+                                <button type="button" class="btn btn-secondary shadow me-3" data-bs-dismiss="modal">Annuler</button>
+                                <button type="button" class="btn btn-bm shadow" id="save" data-bs-dismiss="modal">Modifier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- dialog Modal Suppression-->
+    <div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="ModalLabelDelete" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabelDelete">Suppression de l'élément</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="form_delete">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-bm" id="delete" data-bs-dismiss="modal">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/date-1.1.2/sl-1.4.0/datatables.min.js"></script>
+    <!-- Table-to-json -->
+    <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"
+        integrity="sha256-H8xrCe0tZFi/C2CgxkmiGksqVaxhW0PFcUKZJZo1yNU=" crossorigin="anonymous"></script>
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <!-- Ellipsis.js -->
+    <script src="https://cdn.datatables.net/plug-ins/1.12.1/dataRender/ellipsis.js"></script>
+
+    <script>
+
+        $(function () {
+            var donnees4d ;
+            var etiquettes ;
+            var id_edit = 0;
+            var table;
+            var row = 0;
+            var id_delete = 0;
+            // <thead><tr id="entete">...
+            var entetes = document.getElementById("entete");
+            var formEdit = document.getElementById("form_edit");
+            var formDelete = document.getElementById("form_delete");
+
+            loadListe('http://40.118.109.120:8083/_candidats');
+
+            function loadListe(url) {
+                var xhttp = new XMLHttpRequest();
+                // Définit la fonction invoquée a chaque changement d'état
+                xhttp.onreadystatechange = function () {
+                    // XMLHttpRequest.readyState = 4 <=> réponse prête
+                    // XMLHttpRequest.status = 200 <=> statut HTTP
+                    if (this.readyState == 4 && this.status == 200) {
+                        // données4D = XMLHttpRequest.responseText : la réponse du serveur sous forme d'une string parsée sous forme d'un objet javascript
+                        donnees4d = JSON.parse(xhttp.responseText);
+                        // Les clés des propriétés de l'objet
+                        etiquettes = Object.keys(donnees4d[Object.keys(donnees4d)][0]);
+                        console.log("etiquettes" + etiquettes);
+                        afficherEntetes(etiquettes);
+                        afficherDonnees();
+                    }
+                };
+                // XMLHttpRequest.open("méthodeHTTP" : string, "urlCible" : string, isAsynchrone : boolean);
+                xhttp.open("GET", url, true);
+                // Ajout de la clé d'api dans l'en-tête
+                xhttp.setRequestHeader('key', "token");
+                xhttp.setRequestHeader('value', "xbq12048=!");
+                xhttp.setRequestHeader('type', "default");
+                xhttp.send();
+            }
+
+            // etiquettes est un tableau contenant les clés des propriétés du json renvoyé par le serveur
+            function afficherEntetes(etiquettes) {
+                // Vide le contenu html des entetes du tableau et du corps de la modale
+                entetes.innerHTML = "";
+                // NE PAS VIDER LE CONTENU DE LA MODALE 
+                //formEdit.innerHTML = "";
+                // Traverse le tableau etiquettes
+                etiquettes.forEach(element => {
+                    // crée une colonne dans le tableau pour chaque propriété de l'objet candidat
+                    entetes.innerHTML += "<th>" + element + "</th>";
+                    // Masque l'affichage de la colonne contenant l'ID
+                    var display = "";
+                    if (element == 'id') {
+                        display = " hidden"
+                    }
+                    // NE PAS CRÉER LE FORMULAIRE
+                    // Crée un champ de formulaire pour chaque propriété de candidat
+                    //formEdit.innerHTML += "<label" + display + " class='mt-3'>" + element + "</label>"
+                    // Si l'élément est un booléen le champ sera une checkbox
+                    //if (donnees4d[Object.keys(donnees4d)][0][element] == "Vrai" | donnees4d[Object.keys(donnees4d)][0][element] == "Faux") {
+                    //    formEdit.innerHTML += "<input " + display + " type='checkbox' class='form-check-input ms-3 mt-3' name=" + element + " id=" + element + " value=''><br>"
+                    // Sinon ce sera un champ textuel
+                    //} else {
+                    //    formEdit.innerHTML += "<input" + display + " type='text' class='form-control shadow-sm' name=" + element + " id=" + element + " value=''>"
+                    //}
+                });
+                // Ajout d'une colonne vide qui contiendra les boutons modifier et supprimer
+                entetes.innerHTML += "<th></th>";
+            }
+            
+
+            function afficherDonnees() {
+                var TableauDonnees = [];
+                etiquettes.forEach(element => {
+                    // N'affiche pas les ID
+                    if (element == "id") {
+                        TableauDonnees.push({ "data": element, "visible": false });
+                    } else {
+                        // Si il existe un champ date l'afficher
+                        if (element.indexOf("Date") > -1) {
+                            TableauDonnees.push({
+                                "data": element, "render": DataTable.render.datetime('DD/MM/YYYY','Do MMMM YY')
+                            });
+                        } else {
+                            TableauDonnees.push({ "data": element });
+                        }
+                    }
+                });
+                TableauDonnees.push({
+                    defaultContent: '<button type="button" class="btn btn-dt-bm mx-2 edit" data-bs-toggle="modal" data-bs-target="#Modal" ><i class="fas fa-edit"></i></button><button type="button" class="btn btn-dt-rm mx-2 delete" $displayDelete$ data-bs-toggle="modal" data-bs-target="#ModalDelete" ><i class="fas fa-trash"></i></button>'
+                });
+                table = $('#maTable').DataTable({
+                    responsive: true,
+                    searching: true,
+                    dom: 'Bfrtip',
+                    buttons: [],
+                    scrollY: true,
+                    scrollX: true,
+                    scrollCollapse: true,
+                    paging: true,
+                    pageLength: 50,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                    fixedColumns: false,
+                    language: {
+                        processing: "Traitement en cours...",
+                        search: "Rechercher&nbsp;:",
+                        lengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
+                        info: "Affichage de _START_ &agrave; _END_ sur _TOTAL_ ",
+                        infoEmpty: "Aucun &eacute;l&eacute;ment",
+                        infoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                        infoPostFix: "",
+                        loadingRecords: "Chargement en cours...",
+                        zeroRecords: "Aucun &eacute;l&eacute;ment",
+                        emptyTable: "Aucune donnée disponible dans le tableau",
+                        paginate: {
+                            first: "Premier",
+                            previous: "Pr&eacute;c&eacute;dent",
+                            next: "Suivant",
+                            last: "Dernier"
+                        },
+                        aria: {
+                            sortAscending: ": activer pour trier la colonne par ordre croissant",
+                            sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                        }
+                    },
+                    data: donnees4d[Object.keys(donnees4d)],
+                    order: [[0, "asc"]],
+                    columns:
+                        TableauDonnees,
+                    columnDefs: [
+                        { targets: -1, width: '50px' },
+                        {
+                            targets: '_all', "render": function (data, type, full) {
+                                if (data === "Vrai") {
+                                    return '<i class="far fa-check-square"></i>';
+                                } else {
+                                    if (data === "Faux") {
+                                        return '<i class="far fa-square"></i>';
+                                    } else {
+                                        return data;
+                                    }
+                                }
+                            }
+                        }]
+                });
+            }
+
+            $('#maTable').on('click', 'td .delete', function () {
+                row = $(this).closest('tr');
+                id_delete = table.row(row).data().id;
+                formDelete.innerHTML = "Attention, la suppression de l'élément " + id_delete + " est définitive !"
+            });
+
+            $('#delete').on('click', function () {
+                var request = new XMLHttpRequest();
+                request.open('DELETE', '/$url$/' + id_delete);
+                request.setRequestHeader('Content-Type', 'application/json');
+                request.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        location.reload();
+                    }
+                };
+                request.send();
+            });
+
+            $("input[type=checkbox]").on('change', function () {
+                if ($(this).is(':checked')) {
+                    $(this).val('true');
+                } else {
+                    $(this).val('false');
+                }
+            });
+
+            $("input[type=radio]").on('change', function () {
+                if ($(this).is(':checked')) {
+                    $(this).val('true');
+                } else {
+                    $(this).val('false');
+                }
+            });
+
+            function dateFormat(dateStr) {
+                dateArray = dateStr.split("-");
+                return dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0];
+            }
+
+            // Évenement exécuté lorsqu'on clique sur le bouton modifier
+            $('#maTable').on('click', 'td .edit', function () {
+                //Ajoute le texte "Modifier" dans le bouton #save
+                $('#save').html('Modifier');
+                // Ajoute le titre de la modale
+                $('#ModalLabel').html("Modification de l'élément");
+                // Crée un objet Jquery représentant le plus proche parent étant un <tr>
+                var row = $(this).closest('tr');
+                // Pour chaque clé de l'objet réponse
+                etiquettes.forEach(element => {
+                    $('#' + element).val(table.row(row).data()[element]);
+                    if (table.row(row).data()[element] == "Vrai") {
+                        $('#' + element).prop("checked", true);
+                    } else {
+                        $('#' + element).prop("checked", false);
+                    }
+                });
+            });
+
+            $('#ajouter').on('click', function () {
+                $('#save').html('Ajouter');
+                $('#ModalLabel').html("Ajout d'un élément");
+                etiquettes.forEach(element => {
+                    $('#' + element).val("");
+                    $('#' + element).prop("checked", false);
+                });
+            })
+
+            $('#save').on('click', function () {
+                formatJson();
+                var request = new XMLHttpRequest();
+                if ($('#save').html() == "Modifier") {
+                    request.open('PUT', '/$url$/' + id_edit);
+                } else {
+                    request.open('POST', '/$url$/');
+                }
+                request.setRequestHeader('Content-Type', 'application/json');
+                request.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        location.reload();
+                    }
+                };
+                request.send(JSON.stringify(obj));
+            })
+
+            //formattage en json 
+            var obj = {};
+            function formatJson() {
+                $('input,textarea').each(function () {
+                    if ($(this).prop('type') != 'button' && $(this).prop('type') != 'search') {
+                        nomProp = $(this).attr('name');
+                        obj[nomProp] = $(this).val();
+                    }
+                });
+            }
+
+            //Coloration de l'onglet actif dans la modale 
+            $(".nav-link").on("click", function () {
+                    
+                $(".nav-link").addClass("text-secondary");
+                $(".nav-link").removeClass("text-primary");
+                $("#voir_evenements").removeClass("active");
+                    
+                $(this).addClass("text-primary");
+                $(this).removeClass("text-secondary");
+
+                if ( $(this).attr("id") == "voir_evenements") {
+                    $("a.nav-link").removeClass("active");
+                }
+            })
+
+        });
+    </script>
+
+    </body>
+
+    </html>

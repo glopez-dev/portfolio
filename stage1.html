@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 1ere année</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+            boxShadow: {
+                'cartoon' : '6px 6px 0px -1px #000000',
+                'cartoon-sm' :'3px 3px 0px -1px #000000', 
+            },
+            borderWidth: {
+                'cartoon' : '0.18em',
+            },
+            colors: {
+                'golden-fizz': {
+                '50': '#fafee8',
+                '100': '#f3ffc2',
+                '200': '#eaff87',
+                '300': '#e5ff43',
+                '400': '#edff28',
+                '500': '#e5ef03',
+                '600': '#cec700',
+                '700': '#a49104',
+                '800': '#88710b',
+                '900': '#735b10',
+                },
+                },
+            },
+        },
+    }
+</script>
+
+<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.273/build/spline-viewer.js"></script>
+
+<body class="h-full w-full flex flex-col items-center bg-blue-800" x-data="{open : false}">
+
+    <header class="h-fit w-full xl:w-5/6 p-2 md:px-4 lg:px-6 pr-3 flex flex-row justify-between items-center fixed top-0 z-10">
+        <!-- Logo -->
+        <a href="index.html" class="h-fit w-fit px-2 py-1 bg-white hover:bg-slate-100 text-xs font-medium text-black border-black border-2 shadow-cartoon hover:shadow-cartoon-sm hover:translate-x-1 hover:translate-y-1  hover:scale-95 duration-150">GABRIEL LOPEZ</a>   
+        <!-- Toggle menu button-->
+        <span class="sm:hidden h-fit w-fit px-1 py-1 bg-white hover:bg-slate-100 text-xs font-medium text-black border-black border-2 shadow-cartoon hover:shadow-cartoon-sm rounded-full hover:translate-x-1 hover:translate-y-1  hover:scale-95 duration-150 " x-on:click="open = true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </span>   
+
+        <nav class="hidden sm:inline h-fit w-fit px-1 py-1 text-white text-xs font-medium">
+            <ul class="text-white flex">
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#presentation">À PROPOS</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#projets">PROJETS</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#stages">STAGES</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#veille">VEILLE</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#contact">CONTACT</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <!-- Mobile menu modal -->
+    <aside class="w-screen h-screen flex flex-col fixed top-0 left-0 bg-blue-800 z-50" x-show="open">
+        <header class="h-fit w-full p-2 md:px-4 lg:px-6 pr-3 flex flex-row justify-between items-center fixed top-0 left-0 z-10">
+            <!-- Logo -->
+            <span class="h-fit w-fit px-2 py-1 bg-white text-xs font-medium text-black border-black border-2 shadow-cartoon ">Menu</span>   
+            <!-- Toggle menu button-->
+            <span class="h-fit w-fit px-1 py-1 bg-white hover:bg-slate-100 text-xs font-medium text-black border-black border-2 shadow-cartoon hover:shadow-cartoon-sm rounded-full hover:translate-x-1 hover:translate-y-1  hover:scale-95 duration-150 " x-on:click="open = false">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </span>   
+        </header>
+
+        <main class="h-screen w-screen pt-44 flex flex-col justify-start items-center">
+            <ul class="text-center text-white">
+                <li>
+                    <a href="#presentation">À PROPOS</a>
+                </li>
+
+                <li>PROJETS</li>
+                <li>STAGES</li>
+                <li>VEILLE</li>
+                <li>CONTACT</li>
+            </ul>
+        </main>
+    </aside>
+
+    <main class="h-fit w-full xl:w-5/6 px-2 md:px-4 lg:px-10">
+
+        <section class="pt-24 pb-10 flex flex-col justify-center items-center">
+            <!-- Titre de la page -->
+            <h1 class="w-full flex flex-row justify-center text-2xl text-white font-medium mb-5">Stage 1 : Tisanes Fouché</h1>
+            <!-- Conteneur -->
+            <div class="border-2 border-black shadow-cartoon bg-white p-10 pt-5 w-5/6 rounded-lg">
+                <!-- Contexte -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium">Contexte</h2>
+                    <p>
+                        Tisanes Fouché est une entreprise de vente d'infusions et compléments alimentaires par correspondance, 
+                        elle développe son propre logiciel de gestion avec l'aide de deux développeurs, le logiciel traitant des données comptables, 
+                        il doit être certifié NF525 afin d'être conforme a l'article 88 de la loi anti fraude à la TVA.
+                    </p>
+                </div>
+                <!-- Mission 1 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 1 : Préparation à la certification d'un logiciel</h2>
+                    <p class="pb-2">
+                        L'organisme de certification nous a fourni un référentiel 
+                        contenant l'ensemble des fonctionnalités que le logiciel devait implémenter et des normes et methodologies à respecter.
+                    </p>
+                    <p class="pb-2">
+                        Ma première mission consistait à extraire du référentiel les informations dont l'équipe de développement avait besoin pour travailler.
+                    </p>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>
+                                <a href="/pdf/liste_fonctionnalités.pdf" class="text-blue-800"></a>
+                            </li>
+                            <li>
+                                <a href="/pdf/liste_fonctionnalités.pdf" class="text-blue-800">Production d'une liste de fonctionnalités a implémenter au logiciel à partir du référentiel de certification.</a>
+                            </li>
+                            <li>
+                                <a href="/pdf/scenarios_utilisation.pdf" class="text-blue-800">Adapter les exigences produit imposées par la norme en scénarios d’utilisation du logiciel.</a>
+                            </li>
+                            <li>
+                                <a href="/pdf/">Les développeurs utilisaient la modélisation en UML j'ai donc réalisé un diagramme des cas d'utilisation avec le logiciel StarUML</a>
+                            </li>
+                            <li>
+                                <a href="/pdf/doc_vpc_max.pdf" class="text-blue-800">Production d'une documentation technique à l'aide des outils de l'environnement de développement WinDev</a>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- Mission 2 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 2 : Modernisation du réseau local</h2>
+                    <p class="pb-2">
+                        Nous avons profité d'un jour férié pour effectuer des travaux sur le réseau de l'entreprise, 
+                        mon maitre de stage souhaitait changer un routeur et la maniére dont certains postes étaient organisés,
+                        je me suis occupé des tâches logicielles liées à ces travaux.
+                    </p>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>
+                                <a href="/pdf/scan_reseau.pdf" class="text-blue-800">Recensement des appareils réseaux de l'entreprise à l'aide de l'outil Nmap</a>
+                            </li>
+                            <li>
+                                <a href="/pdf/subnet_tf.pdf" class="text-blue-800">Création d'un schéma logique du réseau local (Adresses IP et noms d'hôtes).</a>
+                            </li>
+                            </li>
+                            <li>Paramétrage d'enregistrements DHCP statiques pour les appareils concernés.</li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- Mission 3 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 3 : Mise à disposition de services réseau</h2>
+                    <p class="pb-2">
+                        L'entreprise avait un NAS qu'ils n'utilisaient plus et m'ont proposé de m'en servir pour essayer de déployer de nouveaux services sur le réseau local, 
+                        l'objectif étant de mettre en place un VPN pour le télé-travail et une solution de prise en main a distance pour aider les utilisateurs en cas de problème.
+                    </p>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>Création d'une documentation utilisateur pour l'utilisation du service Rustdesk.</li>
+                            <li>Mise à disposition d’un service de prise en main a distance avec l’aide d’un conteneur docker sur le NAS de l’entreprise.</li>
+                            <li>Mise a disposition d’un VPN sur le NAS de l’entreprise afin de permettre l’accés a la base de données en télétravail</li>
+                            <li>Réglages de redirection de ports et des pare-feus en lien avec les nouveaux services.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

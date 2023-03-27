@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <!--jQuery pour le datepicker et le select2-->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/date-1.1.2/sl-1.4.0/datatables.min.css"/>
+
+    <style type="text/css">
+
+        .btn-bm{
+            color: #fff;
+            background-color: #334A70;
+            border-color: #334A70;
+        }
+        .btn-bm:hover {
+            color: #334A70;
+            background-color: #fff;
+            border-color: #334A70;
+        }
+        .btn-rm{
+            color: #fff;
+            background-color: #910a13;
+            border-color: #910a13;
+        }
+        .btn-rm:hover {
+            color: #910a13;
+            background-color: #fff;
+            border-color: #910a13 ;
+        }
+        .btn-outline-rm {
+            color: #910a13;
+            background-color: #fff;
+            border-color: #910a13;
+        }
+        .btn-outline-rm:hover {
+            color: #fff;
+            background-color: #910a13;
+            border-color: #910a13;
+        }
+        .bg-rm{
+            color: #fff;
+            background-color: #910a13;
+        }
+        .btn-dt-bm{
+            color: #334A70;
+            background-color: transparent;
+        }
+        .btn-dt-bm:hover {
+            color: #fff;
+            background-color: #334A70;
+        }
+        .btn-dt-gm{
+            color: #03940a;
+            background-color: transparent;
+        }
+        .btn-dt-gm:hover {
+            color: #fff;
+            background-color: #03940a;
+        }
+        .btn-dt-rm{
+            color: #910a13;
+            background-color: transparent;
+        }
+        .btn-dt-rm:hover {
+            color: #fff;
+            background-color: #910a13;
+        }
+        .nav-link, .nav-link:visited, .nav-link:active{
+            color:white;
+        }
+        .nav-link:hover{
+            color:#B1B1B1;
+        }
+        nav a, nav a:link, nav a.dropdown-item{
+            color:white;
+        }
+        nav a.dropdown-item:hover{
+            color:#B1B1B1;
+            background-color: #910a13;
+        }
+        a:hover{
+            color: #B1B1B1;
+        }
+        button a, ul li a, a{
+            color: #334A70;
+            outline: none;
+            text-decoration: none;
+        }
+        tr.odd{
+            background-color: #f1f1f1;
+        }
+        tr.odd:hover, tr.even:hover {
+            background-color: #B1B1B1;
+            color:#fff;
+        }
+        h4 {
+            text-transform: uppercase;
+        }
+
+    </style>
+
+</head>
+<div class="container my-3">
+    <div class="row justify-content-end">
+        <div class="col-md-6 text-end">
+            <button type="button" class="btn btn-bm rounded-0 mt-2" id="ajouter" data-bs-toggle="modal"
+                data-bs-target="#Modal" $displayAdd$>Ajouter un élément</button>
+        </div>
+    </div>
+    <table id="maTable" class="table table-bordered nowrap" width="100%" height="100%">
+        <thead>
+            <tr id="entete">
+            </tr>
+        </thead>
+    </table>
+
+
+    <!-- Modal Edition-->
+    <div class="modal fade xl" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Modification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3" id="form_edit">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-bm" id="save" data-bs-dismiss="modal">Modifier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- dialog Modal Suppression-->
+    <div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="ModalLabelDelete" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabelDelete">Suppression de l'élément</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="form_delete">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-bm" id="delete" data-bs-dismiss="modal">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/date-1.1.2/sl-1.4.0/datatables.min.js"></script>
+    <!-- Table-to-json -->
+    <script src="https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js"
+        integrity="sha256-H8xrCe0tZFi/C2CgxkmiGksqVaxhW0PFcUKZJZo1yNU=" crossorigin="anonymous"></script>
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <!-- Ellipsis.js -->
+    <script src="https://cdn.datatables.net/plug-ins/1.12.1/dataRender/ellipsis.js"></script>
+
+    <script>
+
+        $(function () {
+            var donnees4d ;
+            var etiquettes ;
+            var id_edit = 0;
+            var table;
+            var row = 0;
+            var id_delete = 0;
+            var entetes = document.getElementById("entete");
+            var formEdit = document.getElementById("form_edit");
+            var formDelete = document.getElementById("form_delete");
+
+            loadListe('http://40.118.109.120:8083/_candidats');
+
+            function loadListe(url) {
+                var xhttp = new XMLHttpRequest();
+                // Définit la fonction invoquée a chaque changement d'état
+                xhttp.onreadystatechange = function () {
+                    // XMLHttpRequest.readyState = 4 <=> réponse prête
+                    // XMLHttpRequest.status = 200 <=> statut HTTP
+                    if (this.readyState == 4 && this.status == 200) {
+                        // XMLHttpRequest.responseText : renvoie la réponse du serveur sous forme d'une string
+                        donnees4d = JSON.parse(xhttp.responseText);
+                        etiquettes = Object.keys(donnees4d[Object.keys(donnees4d)][0]);
+                        afficherEntetes(etiquettes);
+                        afficherDonnees();
+                    }
+                };
+                // XMLHttpRequest.open("méthodeHTTP" : string, "urlCible" : string, isAsynchrone : boolean);
+                xhttp.open("GET", url, true);
+                // Ajout de la clé d'api dans l'en-tête
+                xhttp.setRequestHeader('key', "token");
+                xhttp.setRequestHeader('value', "xbq12048=!");
+                xhttp.setRequestHeader('type', "default");
+                xhttp.send();
+            }
+
+            // etiquettes est un tableau contenant les clés des propriétés du json renvoyé par le serveur
+            function afficherEntetes(etiquettes) {
+                // Vide le contenu html des entetes
+                entetes.innerHTML = "";
+                formEdit.innerHTML = "";
+                etiquettes.forEach(element => {
+                    entetes.innerHTML += "<th>" + element + "</th>";
+                    var display = "";
+                    if (element == 'id') {
+                        display = " hidden"
+                    }
+                    formEdit.innerHTML += "<label" + display + " class='mt-3'>" + element + "</label>"
+                    if (donnees4d[Object.keys(donnees4d)][0][element] == "Vrai" | donnees4d[Object.keys(donnees4d)][0][element] == "Faux") {
+                        formEdit.innerHTML += "<input " + display + " type='checkbox' class='form-check-input ms-3 mt-3' name=" + element + " id=" + element + " value=''><br>"
+                    } else {
+                        formEdit.innerHTML += "<input" + display + " type='text' class='form-control' name=" + element + " id=" + element + " value=''>"
+                    }
+                });
+                entetes.innerHTML += "<th></th>";
+            }
+
+            function afficherDonnees() {
+                var TableauDonnees = [];
+                etiquettes.forEach(element => {
+                    if (element == "id") {
+                        TableauDonnees.push({ "data": element, "visible": false });
+                    } else {
+                        if (element.indexOf("Date") > -1) {
+                            TableauDonnees.push({
+                                "data": element, "render": DataTable.render.datetime('DD/MM/YYYY')
+                            });
+                        } else {
+                            TableauDonnees.push({ "data": element });
+                        }
+                    }
+                });
+                TableauDonnees.push({
+                    defaultContent: '<button type="button" class="btn btn-dt-bm mx-2 edit" data-bs-toggle="modal" data-bs-target="#Modal" ><i class="fas fa-edit"></i></button><button type="button" class="btn btn-dt-rm mx-2 delete" $displayDelete$ data-bs-toggle="modal" data-bs-target="#ModalDelete" ><i class="fas fa-trash"></i></button>'
+                });
+                table = $('#maTable').DataTable({
+                    responsive: true,
+                    searching: true,
+                    dom: 'Bfrtip',
+                    buttons: [],
+                    scrollY: true,
+                    scrollX: true,
+                    scrollCollapse: true,
+                    paging: true,
+                    pageLength: 50,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                    fixedColumns: false,
+                    language: {
+                        processing: "Traitement en cours...",
+                        search: "Rechercher&nbsp;:",
+                        lengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
+                        info: "Affichage de _START_ &agrave; _END_ sur _TOTAL_ ",
+                        infoEmpty: "Aucun &eacute;l&eacute;ment",
+                        infoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                        infoPostFix: "",
+                        loadingRecords: "Chargement en cours...",
+                        zeroRecords: "Aucun &eacute;l&eacute;ment",
+                        emptyTable: "Aucune donnée disponible dans le tableau",
+                        paginate: {
+                            first: "Premier",
+                            previous: "Pr&eacute;c&eacute;dent",
+                            next: "Suivant",
+                            last: "Dernier"
+                        },
+                        aria: {
+                            sortAscending: ": activer pour trier la colonne par ordre croissant",
+                            sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                        }
+                    },
+                    data: donnees4d[Object.keys(donnees4d)],
+                    order: [[0, "asc"]],
+                    columns:
+                        TableauDonnees,
+                    columnDefs: [
+                        { targets: -1, width: '50px' },
+                        {
+                            targets: '_all', "render": function (data, type, full) {
+                                if (data === "Vrai") {
+                                    return '<i class="far fa-check-square"></i>';
+                                } else {
+                                    if (data === "Faux") {
+                                        return '<i class="far fa-square"></i>';
+                                    } else {
+                                        return data;
+                                    }
+                                }
+                            }
+                        }]
+                });
+            }
+
+            $('#maTable').on('click', 'td .delete', function () {
+                row = $(this).closest('tr');
+                id_delete = table.row(row).data().id;
+                formDelete.innerHTML = "Attention, la suppression de l'élément " + id_delete + " est définitive !"
+            });
+
+            $('#delete').on('click', function () {
+                var request = new XMLHttpRequest();
+                request.open('DELETE', '/$url$/' + id_delete);
+                request.setRequestHeader('Content-Type', 'application/json');
+                request.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        location.reload();
+                    }
+                };
+                request.send();
+            });
+
+            $("input[type=checkbox]").on('change', function () {
+                if ($(this).is(':checked')) {
+                    $(this).val('true');
+                } else {
+                    $(this).val('false');
+                }
+            });
+
+            $("input[type=radio]").on('change', function () {
+                if ($(this).is(':checked')) {
+                    $(this).val('true');
+                } else {
+                    $(this).val('false');
+                }
+            });
+
+            function dateFormat(dateStr) {
+                dateArray = dateStr.split("-");
+                return dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0];
+            }
+
+            $('#maTable').on('click', 'td .edit', function () {
+                $('#save').html('Modifier');
+                $('#ModalLabel').html("Modification de l'élément");
+                var row = $(this).closest('tr');
+                etiquettes.forEach(element => {
+                    $('#' + element).val(table.row(row).data()[element]);
+                    if (table.row(row).data()[element] == "Vrai") {
+                        $('#' + element).prop("checked", true);
+                    } else {
+                        $('#' + element).prop("checked", false);
+                    }
+                });
+            });
+
+            $('#ajouter').on('click', function () {
+                $('#save').html('Ajouter');
+                $('#ModalLabel').html("Ajout d'un élément");
+                etiquettes.forEach(element => {
+                    $('#' + element).val("");
+                    $('#' + element).prop("checked", false);
+                });
+            })
+
+            $('#save').on('click', function () {
+                formatJson();
+                var request = new XMLHttpRequest();
+                if ($('#save').html() == "Modifier") {
+                    request.open('PUT', '/$url$/' + id_edit);
+                } else {
+                    request.open('POST', '/$url$/');
+                }
+                request.setRequestHeader('Content-Type', 'application/json');
+                request.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        location.reload();
+                    }
+                };
+                request.send(JSON.stringify(obj));
+            })
+
+            //formattage en json 
+            var obj = {};
+            function formatJson() {
+                $('input,textarea').each(function () {
+                    if ($(this).prop('type') != 'button' && $(this).prop('type') != 'search') {
+                        nomProp = $(this).attr('name');
+                        obj[nomProp] = $(this).val();
+                    }
+                });
+            }
+
+        });
+    </script>
+
+    </body>
+
+    </html>

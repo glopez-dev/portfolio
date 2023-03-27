@@ -55,11 +55,21 @@
 
         <nav class="hidden sm:inline h-fit w-fit px-1 py-1 text-white text-xs font-medium">
             <ul class="text-white flex">
-                <li class="px-1 hover:font-semibold hover:text-blue-300">À PROPOS</li>
-                <li class="px-1 hover:font-semibold hover:text-blue-300">PROJETS</li>
-                <li class="px-1 hover:font-semibold hover:text-blue-300">STAGES</li>
-                <li class="px-1 hover:font-semibold hover:text-blue-300">VEILLE</li>
-                <li class="px-1 hover:font-semibold hover:text-blue-300">CONTACT</li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#presentation">À PROPOS</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#projets">PROJETS</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#stages">STAGES</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#veille">VEILLE</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="#contact">CONTACT</a>
+                </li>
             </ul>
         </nav>
 
@@ -102,7 +112,7 @@
                 <div class="flex flex-col md:w-5/6 lg:w-4/6 xl:w-1/2 h-full pb-10 justify-center">
                     <span class="max-sm:text-4xl text-3xl font-medium">Enchanté ! &#128075</span>
                     <span class="max-sm:text-xl text-md pt-2 font-light">
-                        Je suis étudiant en 2eme année de <span class="font-normal">BTS SIO</span> avec une spécialité en développement informatique.
+                        Je suis un étudiant en 2eme année de <span class="font-normal">BTS SIO</span> avec une spécialité en développement informatique.
                         Sur ce portfolio vous pourrez découvrir mon <span class="font-normal">parcours</span>, mes <span class="font-normal">réalisations</span>
                         et mon <span class="font-normal">projet professionnel</span> 
                     </span>
@@ -114,18 +124,22 @@
         </section>
 
         <!-- Second page -->
-        <section class="min-h-screen h-fit w-full pt-20 mb-14 max-sm:px-3 text-white text-xl">
+        <section  id="presentation" class="min-h-screen h-fit w-full pt-44 mb-14 max-sm:px-3 text-white text-xl">
             <h1 class="text-3xl font-medium" >
                Présentation 
             </h1>
-            <div id="presentation" class="max-lg:h-fit h-5/6 pt-3 flex flex-col sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 sm:gap-7">
+            <div class="max-lg:h-fit h-5/6 pt-3 flex flex-col sm:grid sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 sm:gap-7">
                 <div class="bg-white text-base text-black border-4 border-black rounded-xl max-sm:mb-5 p-3 lg:p-5 shadow-cartoon">
                     <h2 class="w-full h-fit pb-2 text-center text-black text-lg font-medium">
                         D'où je viens 
                     </h2>
-                    <p class="">
+                    <p class="pb-1">
                         Aprés avoir obtenu un Bac Scientifique en 2019, j'ai effectué deux ans de licence en Administration et Échanges internationaux à l'Université Paris-Est Créteil.
-                        Malgrés un intéret pour les sujets enseignés j'ai décidé de me réorienter vers l'informatique en 2021 aprés avoir appris le language C de mon côté.
+                    </p>
+                    <p class="pb-1">
+                        Malgrés un intéret pour les sujets enseignés j'ai décidé de me réorienter en informatique en 2021 aprés avoir appris le language C de mon côté.
+                    </p>
+                    <p class="pb-1">
                         Je me suis donc orienté vers un BTS SIO (Service Informatique aux Organisations) formation en deux ans orientée développement Web et Mobile.
                     </p>
                 </div>
@@ -133,51 +147,55 @@
                     <h2 class="w-full h-fit pb-2 text-center text-black text-lg font-medium">
                         Là où j'en suis
                     </h2>
-                    <p class="">
+                    <p class="pb-1">
                         Ce BTS m'a offert un cadre dans mon apprentissage de l'informatique, j'ai choisi la spécialité SLAM (Solutions Logicielles et Applications Métier) 
-                        c'est à dire de développement car je savais depuis le départ que c'était le domaine qui m'intéressait le plus. 
+                        c'est à dire de développement. 
+                    </p>
+                    <p class="pb-1">
                         Je garde cependant un attrait pour l'administration système et les réseaux auquels je m'intéresse sur mon temps libre notamment à travers des formations en Cybersécurité
-                        telles que celles proposées par le site <a href="https://tryhackme.com/">tryhackme.com</a>
+                        telles que celles proposées par le site <a href="https://tryhackme.com/" class="font-medium">tryhackme.com</a>
                     </p>
                 </div>
                 <div class="bg-white text-base text-black border-4 border-black rounded-xl p-3 lg:p-5 shadow-cartoon">
                     <h2 class="w-full h-fit pb-2 text-center text-black text-lg font-medium">
                         Et où je vais
                     </h2>
-                    <p class="">
+                    <p class="pb-1">
                         Après mon BTS j'aimerais continuer en tant que développeur et travailler avec le langage Python afin de
-                        travailler sur des projets an rapport avec le machine learning et l'intelligence artificielle, je cherche désormais 
-                        alternance dans le domaine de la data afin de concorder avec mon projet professionnel et j'ai déja commencé a pratiquer le 
-                        python sur des sites tels que <a href="#">Codewars</a> et <a href="#">Coding games</a>
+                        travailler sur des projets an rapport avec le machine learning et l'intelligence artificielle.
+                    </p>
+                    <p> 
+                        je cherche désormais une alternance dans le domaine de la data afin de concorder avec mon projet professionnel 
+                        et ait commencé l'apprentissage du python sur des sites tels que <a href="https://www.codewars.com/dashboard" class="font-medium">Codewars</a> et <a href="#" class="font-medium">Coding games</a>
                     </p> 
                 </div>
             </div>
         </section>
 
         <!-- Projects page -->
-        <section class="min-h-screen h-fit sm:h-screen w-full pt-20 max-sm:px-3 text-white text-xl flex flex-col justify-center items-center">
+        <section id="projets" class="min-h-screen h-fit sm:h-screen w-full pt-20 max-sm:px-3 text-white text-xl flex flex-col justify-center items-center">
                 <h1 class="text-3xl font-medium">
                     Projets
                 </h1>
                 <div class="h-fit w-full lg:w-5/6 xl:w-3/4 sm:h-5/6 my-5 flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-5 sm:grid-rows-2 sm:gap-5">
                     
                     <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon lg:col-start-1 lg:col-span-3 overflow-hidden flex flex-col justify-center items-center relative">
-                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/festival.png')] hue-rotate-60 z-0"></div>
+                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/img/festival.png')] hue-rotate-60 z-0"></div>
                         <h2 class="h-fit w-fit bg-white border-black border-2 px-2 text-black shadow-cartoon-sm hover:shadow-cartoon hover:text-2xl transition delay-150 ease-in-out z-10">Festival</h2>
                     </div>
 
                     <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon lg:col-start-4 lg:col-span-2 flex flex-col justify-center items-center relative overflow-hidden">
-                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/facturation.png')]  hue-rotate-60 z-0"></div>
+                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/img/facturation.png')]  hue-rotate-60 z-0"></div>
                         <h2 class="h-fit w-fit  bg-white border-black border-2 px-2 text-black shadow-cartoon-sm hover:shadow-cartoon hover:text-2xl transition delay-150 ease-in-out z-10">Facturation</h2>
                     </div>
 
                     <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon row-start-2 lg:col-start-3 lg:col-span-3 flex flex-col justify-center items-center relative overflow-hidden">
-                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/parking.png')] hue-rotate-60 z-0"></div>
+                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/img/parking.png')] hue-rotate-60 z-0"></div>
                         <h2 class="h-fit w-fit bg-white border-black border-2 px-2 text-black shadow-cartoon-sm hover:shadow-cartoon hover:text-2xl transition delay-150 ease-in-out z-10">Parking</h2>
                     </div>
 
                     <div class="max-sm:mb-5 max-sm:h-56 bg-white border-black border-4 rounded-xl shadow-cartoon row-start-2 lg:col-start-1 lg:col-span-2 flex flex-col justify-center items-center relative overflow-hidden">
-                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/personnel.png')] hue-rotate-60 z-0"></div>
+                        <div class="w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-center bg-[url('/img/personnel.png')] hue-rotate-60 z-0"></div>
                         <h2 class="h-fit w-fit bg-white border-black border-2 px-2 text-black shadow-cartoon-sm hover:shadow-cartoon hover:text-2xl transition delay-150 ease-in-out z-10 ">Personnel</h2>
                     </div>
 
@@ -185,60 +203,92 @@
        </section>
 
         <!-- Internships page -->
-        <section class="min-h-screen h-fit sm:h-screen flex flex-col justify-center items-center sm:h-screen w-full px-5 pt-20 max-sm:px-3 mt-5 text-white text-xl">
+        <section id="stages" class="min-h-screen h-fit sm:h-screen flex flex-col justify-center items-center sm:h-screen w-full px-5 pt-20 max-sm:px-3 mt-5 text-white text-xl">
             <h1 class="text-3xl font-medium">
                 Stages
             </h1>
             <div class="h-fit sm:h-5/6 xl:w-3/4 mt-5 flex flex-col sm:grid sm:grid-cols-1 sm:grid-rows-2 sm:gap-10 ">
                 <!-- Internship card -->
-               <div class="p-2 lg:p-3 max-sm:mb-5 bg-white border-black border-4  rounded-xl shadow-cartoon flex flex-col justify-center overflow-hidden sm:grid sm:grid-cols-2 sm:gap-4">
-                    <div class="h-44 sm:w-72 lg:w-80 sm:h-3/4 w mb-3 rounded-lg bg-blue-600 "></div>
+               <div class="p-2 lg:p-5 max-sm:mb-5 bg-white border-black border-4  rounded-xl shadow-cartoon flex flex-col justify-center overflow-hidden sm:grid sm:grid-cols-5 sm:grid-rows-1 sm:gap-4">
+                    <div class="h-44 sm:w-72 lg:w-80 sm:h-3/4 w mb-3 rounded-lg bg-white sm:col-span-2 bg-fit bg-no-repeat bg-center bg-[url('/img/tisanes.jpg')]"></div>
                     <!-- Text -->
-                    <div>
-                        <h2 class="text-black">Tisanes fouché</h2>
-                        <span class="h-44 text-black text-base sm:text-sm md:text-base p-1 ">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                            Architecto sequi voluptatum totam ullam porro, iste, 
-                            temporibus quae unde cupiditate quia est sunt molestiae 
-                            maxime aut iure maiores optio necessitatibus suscipit?
+                    <div class="sm:col-start-3 sm:col-span-3 flex flex-col">
+                        <h2 class="text-black font-medium">Tisanes fouché</h2>
+                        <span class="h-fit text-black text-base sm:text-sm md:text-base pb-9 ">
+                            C'est une entreprise de vente d'infusions et compléments alimentaires par correspondance, 
+                            elle développe son propre logiciel de gestion avec l'aide de deux développeurs. 
+                            Le logiciel traitant des données comptables, il doit être certifié NF525 afin d'être conforme a l'article 88 de la loi anti fraude à la TVA.
                         </span>
+                        <div class="h-fit w-full flex flex-col justify-center items-end pr-10">
+                            <a href="stage1.html" class="w-fit h-fit py-1 px-2 rounded-full shadow-cartoon-sm border-2 border-black text-white text-base bg-blue-600 flex flex-row">
+                                En savoir plus &nbsp;
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                </div>
                 <!-- Internship card 2 -->
-               <div class="lg:p-3 bg-white border-black border-4 p-2 rounded-xl shadow-cartoon flex flex-col overflow-hidden sm:grid sm:grid-cols-2 sm:gap-4">
-                    <div class="h-44 sm:w-72 lg:w-80 sm:h-3/4 w mb-3 rounded-lg bg-blue-600 "></div>
+                <div class="p-2 lg:p-5 max-sm:mb-5 bg-white border-black border-4  rounded-xl shadow-cartoon flex flex-col justify-center overflow-hidden sm:grid sm:grid-cols-5 sm:grid-rows-1 sm:gap-4">
+                    <div class="h-44 sm:w-72 lg:w-80 sm:h-3/4 w mb-3 rounded-lg bg-white sm:col-span-2 bg-fit bg-no-repeat bg-center bg-[url('/img/apog.svg')]"></div>
                     <!-- Text -->
-                    <div>
-                        <h2 class="text-black">APO'G</h2>
-                        <span class="h-44 text-black text-base sm:text-sm md:text-base p-1 ">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                            Architecto sequi voluptatum totam ullam porro, iste, 
-                            temporibus quae unde cupiditate quia est sunt molestiae 
-                            maxime aut iure maiores optio necessitatibus suscipit?
+                    <div class="sm:col-start-3 sm:col-span-3 flex flex-col">
+                        <h2 class="text-black font-medium">APO'G</h2>
+                        <span class="h-fit text-black text-base sm:text-sm md:text-base pb-9 ">
+                            Apo’g est une ESN intervenant auprès des Pme-Pmi. Elle proposons des solutions globales et des prestations de service dans les domaines du réseau informatique, 
+                            du cloud, de la visioconférence, de la téléphonie classique ou IP, du progiciel métier et du câblage courant faible.
                         </span>
+                        <div class="h-fit w-full flex flex-col justify-center items-end pr-10">
+                            <a href="stage2.html" class="w-fit h-fit py-1 px-2 rounded-full shadow-cartoon-sm border-2 border-black text-white text-base bg-blue-600 flex flex-row">
+                                En savoir plus &nbsp;
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-               </div>
-            </div>
+               </div>              
+           </div>
         </section>
 
         <!-- Personnal research page -->
-        <section class="min-h-screen h-fit w-full px-5 lg:px-10 pt-20 max-sm:px-3 text-white text-xl flex flex-col justify-center items-center">
+        <section id="veille" class="min-h-screen h-fit w-full px-5 lg:px-10 pt-20 max-sm:px-3 text-white text-xl flex flex-col justify-center items-center">
             <h1 class="text-3xl font-medium">
                 Veille technologique
             </h1>
-            <div class="h-fit sm:h-5/6 my-5 flex flex-col">
-                <div class="bg-white border-black text-black border-4 rounded-xl shadow-cartoon p-3">
-                    <h1 class="text-2xl font-bold mb-4">Pourquoi faire une veille technologique sur l'IA en 2023 ?</h1>
-	                <p class="mt-4 mb-8">En tant que développeur, il est essentiel de se tenir au courant des dernières tendances et avancées technologiques, en particulier dans le domaine de l'intelligence artificielle (IA). L'IA est une technologie en constante évolution qui offre des avantages et des opportunités considérables pour les entreprises et les particuliers, en offrant une solution à de nombreux défis dans des domaines tels que la santé, l'agriculture, la finance et la sécurité.</p>
-	                <p class="mt-4 mb-8">En faisant une veille technologique régulière sur l'IA en 2023, un développeur peut rester à la pointe de cette technologie en rapide évolution et découvrir de nouvelles façons de l'appliquer dans différents secteurs d'activité. La veille permet également de découvrir des nouvelles solutions et des nouvelles perspectives, comme les développements en matière de traitement du langage naturel, de vision par ordinateur et de machine learning.</p>
-	                <p class="mt-4 mb-8">En outre, la veille technologique sur l'IA peut aider un développeur à être au courant des dernières tendances en matière de réglementation et de conformité. En effet, les réglementations et les politiques liées à l'IA sont en constante évolution, et il est essentiel de comprendre les implications de ces changements pour garantir la conformité et éviter tout risque de non-conformité ou de violation de la vie privée des utilisateurs.</p>
-	                <p class="mt-4 mb-8">Enfin, une veille technologique régulière sur l'IA peut aider un développeur à rester au courant des nouveaux outils, des nouvelles méthodes et des nouvelles techniques de programmation qui peuvent être utilisés pour améliorer l'efficacité et la qualité de son travail. Cela peut également permettre d'identifier des nouvelles solutions et des nouvelles applications, permettant d'innover dans son travail et de développer de nouveaux projets passionnants.</p> 
-                </div>
+            <div class="h-fit sm:h-5/6 xl:w-3/4 mt-5 flex flex-col sm:grid sm:grid-cols-1 sm:grid-rows-2 sm:gap-10 ">
+                 <div class="p-2 lg:p-5 max-sm:mb-5 bg-white border-black border-4  rounded-xl shadow-cartoon flex flex-col justify-center overflow-hidden sm:grid sm:grid-cols-5 sm:grid-rows-1 sm:gap-10">
+                    <div class="h-44 sm:w-72 lg:w-80 sm:h-3/4 w mb-3 rounded-lg bg-white sm:col-span-2 bg-fit bg-no-repeat bg-center bg-[url('/img/veille.png')]"></div>
+                    <!-- Text -->
+                    <div class="sm:col-start-3 sm:col-span-3 flex flex-col">
+                        <h2 class="text-black font-medium">Les progrès de l'intelligence artificielle</h2>
+                        <div class="h-fit text-black text-base sm:text-sm md:text-base pb-9 ">
+                            <p class="py-1">
+                            Depuis quelques années de nouveaux modèles d'intelligence artificielles plus impressionnants les uns que les autres
+                            sont dévoilés au grand public : génération d'image, traitement de language naturel, génération de code... 
+
+                            </p>
+                            <p>
+                            Ces nouvelles technologies promettent des innovations qui vont très certainement modifier notre manière de travailler
+                            et tout particuliérement le monde du développement ou de plus en plus de choses sont automatisées.
+                            </p>
+                        </div>
+                        <div class="h-fit w-full flex flex-col justify-center items-end pr-10">
+                            <button type="button" class="w-fit h-fit py-1 px-2 rounded-full shadow-cartoon-sm border-2 border-black text-white text-base bg-blue-600 flex flex-row">
+                                Découvrir ma veille &nbsp;
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+               </div>  
             </div>
         </section>
 
         <!-- Contact page -->
-        <section class="h-screen w-full px-5 lg:px-10 pt-20 max-sm:px-3 flex flex-col justify-center items-center text-white text-xl">
+        <section id="contact" class="h-screen w-full px-5 lg:px-10 pt-20 max-sm:px-3 flex flex-col justify-center items-center text-white text-xl">
             <!-- Container -->
             <div class="lg:w-5/6 xl:w-3/5 flex flex-col justify-center items-center align-middle">
                 <h1 class="w-full text-center text-xl lg:text-2xl font-medium">
