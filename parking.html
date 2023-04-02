@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Parking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+            boxShadow: {
+                'cartoon' : '6px 6px 0px -1px #000000',
+                'cartoon-sm' :'3px 3px 0px -1px #000000', 
+            },
+            borderWidth: {
+                'cartoon' : '0.18em',
+            },
+            colors: {
+                'golden-fizz': {
+                '50': '#fafee8',
+                '100': '#f3ffc2',
+                '200': '#eaff87',
+                '300': '#e5ff43',
+                '400': '#edff28',
+                '500': '#e5ef03',
+                '600': '#cec700',
+                '700': '#a49104',
+                '800': '#88710b',
+                '900': '#735b10',
+                },
+                },
+            },
+        },
+    }
+</script>
+
+<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.273/build/spline-viewer.js"></script>
+
+<body class="h-full w-full flex flex-col items-center bg-blue-800" x-data="{open : false}">
+
+    <header class="h-fit w-full xl:w-5/6 p-2 md:px-4 lg:px-6 pr-3 flex flex-row justify-between items-center fixed top-0 z-10">
+        <!-- Logo -->
+        <a href="index.html" class="h-fit w-fit px-2 py-1 bg-white hover:bg-slate-100 text-xs font-medium text-black border-black border-2 shadow-cartoon hover:shadow-cartoon-sm hover:translate-x-1 hover:translate-y-1  hover:scale-95 duration-150">GABRIEL LOPEZ</a>   
+        <!-- Toggle menu button-->
+        <span class="sm:hidden h-fit w-fit px-1 py-1 bg-white hover:bg-slate-100 text-xs font-medium text-black border-black border-2 shadow-cartoon hover:shadow-cartoon-sm rounded-full hover:translate-x-1 hover:translate-y-1  hover:scale-95 duration-150 " x-on:click="open = true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </span>   
+
+        <nav class="hidden sm:inline h-fit w-fit px-1 py-1 text-white text-xs font-medium">
+            <ul class="text-white flex">
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="index.html#presentation">À PROPOS</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="index.html#projets">PROJETS</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="index.html#stages">STAGES</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="index.html#veille">VEILLE</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="index.html#contact">CONTACT</a>
+                </li>
+                <li class="px-1 hover:font-semibold hover:text-blue-300">
+                    <a href="index.html#CV">CV</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <!-- Mobile menu modal -->
+    <aside class="w-screen h-screen flex flex-col fixed top-0 left-0 bg-blue-800 z-50" x-show="open">
+        <header class="h-fit w-full p-2 md:px-4 lg:px-6 pr-3 flex flex-row justify-between items-center fixed top-0 left-0 z-10">
+            <!-- Logo -->
+            <span class="h-fit w-fit px-2 py-1 bg-white text-xs font-medium text-black border-black border-2 shadow-cartoon ">Menu</span>   
+            <!-- Toggle menu button-->
+            <span class="h-fit w-fit px-1 py-1 bg-white hover:bg-slate-100 text-xs font-medium text-black border-black border-2 shadow-cartoon hover:shadow-cartoon-sm rounded-full hover:translate-x-1 hover:translate-y-1  hover:scale-95 duration-150 " x-on:click="open = false">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </span>   
+        </header>
+
+        <main class="h-screen w-screen pt-44 flex flex-col justify-start items-center">
+            <ul class="text-center text-white">
+                <li>
+                    <a href="#presentation">À PROPOS</a>
+                </li>
+
+                <li>PROJETS</li>
+                <li>STAGES</li>
+                <li>VEILLE</li>
+                <li>CONTACT</li>
+            </ul>
+        </main>
+    </aside>
+
+    <main class="h-fit w-full xl:w-5/6 px-2 md:px-4 lg:px-10">
+
+        <section class="pt-24 pb-10 flex flex-col justify-center items-center">
+            <!-- Titre de la page -->
+            <h1 class="w-full flex flex-row justify-center text-2xl text-white font-medium mb-5">Gestion des places de parking &#128663;</h1>
+            <!-- Conteneur -->
+            <div class="border-2 border-black shadow-cartoon bg-white p-10 pt-5 w-5/6 rounded-lg">
+
+                <!-- Contexte -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium">Contexte</h2>
+                    <p>
+                       La maison des ligues aimerait développer une application permettant de gérer les attributions des places de son parking afin d’éviter le stationnement sauvage. 
+                    </p>
+                </div>
+                <!-- Mission 1 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 1 : Plannification des tâches</h2>
+                    <p class="pb-2">
+                        Dans un premier temps il nous a fallu organiser notre travail, nous avons donc réalisé un cahier des charges et trié les tâches par ordre de priorité.
+                    </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Travail effectué :</h3>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>Traduction des besoins client en une liste de tâches de développement</li>
+                            <li>Évaluer les éléments essentiels du projet afin de les livrer en priorité</li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- Mission 2 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 2 : Conception de la base de données</h2>
+                    <p class="pb-2">
+                        Nous avons utilisé le méthode Merise afin de concevoir la base de donnée de l’application à partir du besoin exprimé par le client
+                    </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Travail effectué :<h3>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>Identification des règles de gestion dans les besoins exprimés par le client.</li>
+                            <li>Création d’un dictionnaire de données à partir des règles de gestion</li>
+                            <li>Analyse des dépendances fonctionnelles entre les données</li>
+                            <li>Modélisation conceptuelle des données</li> 
+                            <li>Traduction logique du MCD en MLDR</li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- Mission 3 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 3 : Mise en place de l'environnement de développement</h2>
+                    <p class="pb-2">
+                        Nous avons ensuite effectué toutes les tâches préliminaires afin de pouvoir commencer à développer l’application.
+                    </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Travail effectué :<h3>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>Installation des paquets php nécessaires à l’utilisation du Framework Laravel</li>
+                            <li>Initialisation du des variables d’environnement de l’application</li>
+                            <li>Création d’une BDD MySQL et d’un utilisateur avec les droits associés pour l’application</li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- Mission 4 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 4 : Début de la phase de développement</h2>
+                    <p class="pb-2">
+                        C’était la première fois que nous utilisions le Framework Laravel, nous avons donc passé un certain temps afin de comprendre comment fonctionnait son architecture. Cette fois-ci la tâche principale consistait à préparer des données fictives pour le développement.
+                    </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Travail effectué :<h3>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>Création des migrations à partir du modèle logique de données.</li>
+                            <li>Création des relations entre les classes Modèles</li>
+                            <li>Création des factories avec la librairie Faker PHP</li>
+                            <li>Création des seeders à partir des factories pour générer des données fictives</li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- Mission 5 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 5 : Développement Back-end</h2>
+                    <p class="pb-2">
+                        Après avoir compris comment le framework fonctionnait nous avons commencé à implémenter les fonctionnalités Back-end présentes dans la liste des tâches.
+                    </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Travail effectué :<h3>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>Création d'un système d'authentification de zéro</li>
+                            <li>Création des Gates pour la gestion des accès utilisateurs</li>
+                            <li>Création des routes et des contrôleurs pour les fonctionnalités principales de l’application 
+                                (gestion des inscriptions, attribution des places, gestion des listes d’attente, etc.)</li>
+                            <li>Ajout du Hachage des mot de passes</li>
+                            <li>Création d'un système de queue pour les employes en attente d'une place</li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- Mission 6 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 6 : Développement Front-end</h2>
+                    <p class="pb-2">
+                        Une fois la logique Back-end implémentée nous avons commencé à réaliser les Vues, pour cela nous avons décidé d'utiliser laravel blade, tailwindcss et alpine.js qui permettent de 
+                        gérer tout le design directement dans le code HTML, j'ai également créé un design system avec une palette de couleurs personnalisée pour l'application à partir de designs trouvés sur le site "Behance"
+                    </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Travail effectué :<h3>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>Création d'une palette de couleurs personnalisée pour tailwindcss</li>
+                            <li>Création de maquettes de la dashboard</li>
+                            <li>Implémentation des vues avec un design responsive</li>
+                            <li>Création de fenêtres modales avec alpine.js</li>
+                            <li>Utilisation d'une API pour récupérer des "Gravatars", photos de profil générées à partir d'un hash</li>
+                        </ul>
+                    </p>
+                </div>
+                <!-- Mission 7 -->
+                <div class="pb-5">
+                    <h2 class="text-black text-xl font-medium pb-1">Mission 7 : Déploiement de l'application</h2>
+                    <p class="pb-2">
+                        Aprés avoir finalisé l'application et testé son bon fonctionnement nous avons eu à déployer notre application sur un serveur web Apache.
+                    </p>
+                    <h3 class="text-black text-lg font-medium pb-1">Travail effectué :<h3>
+                    <p>
+                        <ul class="list-disc pl-5">
+                            <li>Utilisation d'un terminal en ssh pour accéder au serveur</li>
+                            <li>Paramétrage du serveur Apache</li>
+                            <li>Paramétrage du serveur MySQL</li>
+                        </ul>
+                    </p>
+                </div>
+               <!-- Lien de base de page -->
+                <div class="w-full h-fit flex flex-col justify-center my-7">
+                    <a href="https://github.com/PPE-BTS-SIO-2023-EMALARME-GLOPEZ/Parking_PPE" class="w-fit h-fit px-2 py-1 border-2 border-black rounded-lg shadow-cartoon-sm hover:bg-golden-fizz-400 hover:text-black self-center bg-blue-600 transition delay-150 text-white">Voir le projet sur GitHub</a>
+                </div>                  
+            </div>
+        </section>
+    </main>
+</body>
